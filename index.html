@@ -122,6 +122,58 @@
         opacity: 0;
         pointer-events: none;
       }
+
+      .header1 {
+        position: fixed;
+        top: 1rem;
+        width: 96%;
+        padding: 0 1rem;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hamburger {
+        width: 24px;
+        height: 18px;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .contact-btn {
+        color: #fff;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+      }
+
+      @media (max-width: 769px) {
+        .contact-btn {
+          margin-right: 2rem;
+        }
+      }
+
+      .header-line {
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        margin-top: 8px;
+        margin-left: 25px;
+      }
     </style>
   </head>
   <body>
@@ -132,6 +184,18 @@
         Your browser does not support the video tag.
       </video>
     </div>
+
+    <header class="header1">
+      <div class="header-content">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <a href="#contact" class="contact-btn">Contact us</a>
+      </div>
+      <div class="header-line"></div>
+    </header>
     <!-- Section1 -->
     <section id="section1" class="section section1">
       <!-- <video autoplay muted loop id="background-video">
@@ -410,8 +474,13 @@
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
 
+        const ismobile = window.matchMedia("(max-width: 520px)").matches;
+
         // Dynamically set the diameter and radius based on the viewport size
-        const arcDiameter = Math.min(screenWidth, screenHeight) * 0.6; // Set the arc diameter to 80% of the smallest dimension
+        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.7; // Set the arc diameter to 80% of the smallest dimension
+        if (ismobile) {
+          arcDiameter = Math.min(screenWidth, screenHeight) * 0.65;
+        }
         const arcRadius = arcDiameter / 2;
 
         // Positioning planets in an arc
@@ -426,7 +495,7 @@
           const y = arcRadius * Math.sin((angle * Math.PI) / 180);
 
           // Rotate each link based on its angle to follow the arc curvature
-          link.style.transform = `translate(${x - 40}px, ${y}px) rotate(${
+          link.style.transform = `translate(${x - 35}px, ${y}px) rotate(${
             angle + 90
           }deg)`;
           link.style.bottom = "15px";
