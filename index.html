@@ -92,7 +92,7 @@
         position: fixed !important;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -70%;
+        bottom: -90%;
         width: 50%;
         transition: all 0.1s ease-out;
         will-change: transform, left, bottom;
@@ -125,54 +125,209 @@
 
       .header1 {
         position: fixed;
-        top: 1rem;
+        top: 2px;
         width: 96%;
-        padding: 0 1rem;
+        /* padding: 0 1rem; */
+        z-index: 30;
       }
 
-      .header-content {
+      .nav-container {
+        max-width: 1300px;
+        margin: 0 auto;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         align-items: center;
       }
 
+      .left-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .right-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        padding-bottom: 5px;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #ca910b;
+        left: 50%;
+        bottom: -3px;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ca910b;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .logo-nav {
+        max-width: 180px;
+        height: auto;
+      }
+
+      /* Mobile Menu Styles */
+      .mobile-nav {
+        display: none;
+      }
+
       .hamburger {
-        width: 24px;
-        height: 18px;
+        display: none;
+        width: 30px;
+        height: 20px;
         position: relative;
         cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        z-index: 100;
       }
 
       .hamburger span {
         display: block;
-        width: 100%;
+        position: absolute;
         height: 2px;
-        background: #fff;
-        transition: all 0.3s ease;
+        width: 100%;
+        background: white;
+        transition: 0.25s ease-in-out;
       }
 
-      .contact-btn {
-        color: #fff;
-        text-decoration: none;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
+      .hamburger span:nth-child(1) {
+        top: 0;
+      }
+      .hamburger span:nth-child(2) {
+        top: 9px;
+      }
+      .hamburger span:nth-child(3) {
+        top: 18px;
       }
 
-      @media (max-width: 769px) {
-        .contact-btn {
+      .hamburger.active span:nth-child(1) {
+        top: 9px;
+        transform: rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        top: 9px;
+        transform: rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .header1 {
+          background: transparent;
+        }
+
+        .nav-container {
+          justify-content: space-between;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
           margin-right: 2rem;
         }
-      }
 
-      .header-line {
-        width: 100%;
-        height: 1px;
-        background: #fff;
-        margin-top: 8px;
-        margin-left: 25px;
+        .hamburger {
+          display: block;
+        }
+
+        .logo-nav {
+          max-width: 150px;
+        }
+
+        .mobile-menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: black;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+          z-index: 90;
+        }
+
+        .mobile-menu.active {
+          transform: translateX(0);
+        }
+
+        .mobile-menu a {
+          color: white;
+          text-decoration: none;
+          font-family: Arial, sans-serif;
+          font-size: 18px;
+          position: relative;
+        }
+
+        .mobile-menu a::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 2px;
+          background: #ca910b;
+          left: 50%;
+          bottom: -3px;
+          transform: translateX(-50%);
+          transition: width 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+          color: #ca910b;
+        }
+
+        .mobile-menu a:hover::after {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -186,28 +341,52 @@
     </div>
 
     <header class="header1">
-      <div class="header-content">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+      <nav class="nav-container">
+        <div class="nav-links">
+          <div class="left-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#why">Why Choose Us</a>
+            <a href="#services">Our Services</a>
+          </div>
+          <img class="logo-nav" src="assets/cin-logo.png" alt="logo" />
+          <div class="right-links">
+            <a href="#clients">Clients</a>
+            <a href="#portfolio">Our Portfolio</a>
+            <a href="#segments">Segments</a>
+            <a href="#contact">Contact Us</a>
+          </div>
         </div>
-        <a href="#contact" class="contact-btn">Contact us</a>
-      </div>
-      <div class="header-line"></div>
+
+        <div class="mobile-nav">
+          <img class="logo-nav" src="assets/cin-logo.png" alt="logo" />
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#why">Why Choose Us</a>
+          <a href="#services">Our Services</a>
+          <a href="#clients">Clients</a>
+          <a href="#portfolio">Our Portfolio</a>
+          <a href="#segments">Segments</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </nav>
     </header>
     <!-- Section1 -->
     <section id="section1" class="section section1">
-      <!-- <video autoplay muted loop id="background-video">
-            <source src="assets/section1/banner-v.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> -->
       <video
         playsinline
         autoplay
         loop
         muted
-        width="50%"
         class="myvid1"
         id="sunVideo"
         src="assets/globs/sun.webm"
@@ -216,49 +395,34 @@
       </video>
 
       <div class="header">
-        <img
+        <!-- <img
           data-aos="fade-up"
           data-aos-anchor-placement="top-center"
           data-aos-duration="1500"
           src="assets/cin-logo.png"
           alt=""
-        />
-        <h1 data-aos="zoom-in" data-aos-duration="2000">
+        /> -->
+        <h1 data-aos="zoom-in" data-aos-duration="1500">
           creativity in nature
         </h1>
-        <h2 data-aos="zoom-in" data-aos-delay="2000" data-aos-duration="2500">
+        <h2 data-aos="zoom-in" data-aos-delay="1500" data-aos-duration="2000">
           The shining star of digital success
         </h2>
         <button
           data-aos="zoom-in"
-          data-aos-delay="2500"
-          data-aos-duration="2000"
+          data-aos-delay="2000"
+          data-aos-duration="2500"
           class="button-84"
           role="button"
         >
           MAKE A WISH
         </button>
       </div>
-      <!-- <div class="footer"> -->
-      <!-- <img id="glob1" src="assets/glob1.gif" alt=""> -->
-      <!-- <img id="glob1" src="assets/globes/earth/earth-main.gif" alt=""> -->
-      <!-- </div> -->
     </section>
 
     <!-- Section2 -->
     <section id="section2" class="section section2">
       <div class="section2-content">
-        <!-- <div class="col-lg-7">
-                <h1>Creativity In Nature</h1>
-                <h3>Digital Marketing Agency</h3>
-                <p>
-                    CIN is a joyous celebration of human creativity. We are a group of hand-picked, like-minded
-                    professionals who have come together to make the ultimate creative team. Each of us is a
-                    game-changing expert in our respective areas. Together, we are CIN. We help clients harness
-                    the magic of social media, develop a domineering web presence, generate leads, grow brands
-                    and straight-up design their products, processes and projects as needed.
-                </p>
-            </div>   -->
         <div
           id="sect2-text"
           data-aos="zoom-out-up"
@@ -279,9 +443,6 @@
             presence, generate leads, grow brands and straight-up design their
             products, processes and projects as needed.
           </p>
-        </div>
-        <div class="image">
-          <!-- <img data-aos="fade-down-right" src="assets/glob1.gif" alt="Glob1" id="small-globe"> -->
         </div>
       </div>
     </section>
@@ -456,6 +617,42 @@
     <script>
       AOS.init();
 
+      function updatePlanetPositions() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        const ismobile = window.matchMedia("(max-width: 520px)").matches;
+        const planetLinks = document.querySelectorAll(".planet-links a");
+
+        // Dynamically set the diameter and radius
+        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75;
+        if (ismobile) {
+          arcDiameter = Math.min(screenWidth, screenHeight) * 0.75;
+        }
+        const arcRadius = arcDiameter / 2;
+
+        // Position planets
+        const totalPlanets = planetLinks.length;
+        const angleStep = 180 / (totalPlanets - 1);
+
+        planetLinks.forEach((link, index) => {
+          const angle = -180 + angleStep * index;
+          const x = arcRadius * Math.cos((angle * Math.PI) / 180);
+          const y = arcRadius * Math.sin((angle * Math.PI) / 180);
+
+          link.style.transform = `translate(${x - (ismobile ? 30 : 20)}px, ${
+            y + 5
+          }px) rotate(${angle + 90}deg)`;
+          link.style.bottom = "15px";
+          link.style.marginLeft = "5px";
+          link.style.fontWeight = "2rem";
+          link.style.left = "50%";
+          link.style.zIndex = "10";
+          link.style.transformOrigin = "center center";
+        });
+      }
+
+      window.addEventListener("resize", updatePlanetPositions);
+
       document.addEventListener("DOMContentLoaded", function () {
         const globe = document.getElementById("vid");
         const sectionDefaultTitle = document.getElementById(
@@ -477,9 +674,9 @@
         const ismobile = window.matchMedia("(max-width: 520px)").matches;
 
         // Dynamically set the diameter and radius based on the viewport size
-        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.7; // Set the arc diameter to 80% of the smallest dimension
+        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75; // Set the arc diameter to 80% of the smallest dimension
         if (ismobile) {
-          arcDiameter = Math.min(screenWidth, screenHeight) * 0.65;
+          arcDiameter = Math.min(screenWidth, screenHeight) * 0.75;
         }
         const arcRadius = arcDiameter / 2;
 
@@ -495,9 +692,14 @@
           const y = arcRadius * Math.sin((angle * Math.PI) / 180);
 
           // Rotate each link based on its angle to follow the arc curvature
-          link.style.transform = `translate(${x - 35}px, ${y}px) rotate(${
+          link.style.transform = `translate(${x - 20}px, ${y + 5}px) rotate(${
             angle + 90
           }deg)`;
+          if (ismobile) {
+            link.style.transform = `translate(${x - 30}px, ${y + 5}px) rotate(${
+              angle + 90
+            }deg)`;
+          }
           link.style.bottom = "15px";
           link.style.marginLeft = "5px";
           link.style.fontWeight = "2rem";
@@ -547,31 +749,41 @@
             // }, 300); // Delay for the transition effect
 
             // Get data attributes from the clicked link
+            const sunVideo = document.getElementById("sunVideo");
             const planet = this.getAttribute("data-planet");
             const subtitle = this.getAttribute("data-subtitle");
             const description = this.getAttribute("data-description");
             if (planet == "Mercury") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.classList.add("fade-down-left");
               setTimeout(() => {
                 globe.src = "assets/globs/Mercury.webm";
               }, 200);
             } else if (planet == "Venus") {
               globe.classList.add("fade-down-left");
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Venus.webm";
             } else if (planet == "Earth") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Earth.webm";
             } else if (planet == "Mars") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Mars.webm";
             } else if (planet == "Jupiter") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Jupiter.webm";
             } else if (planet == "Saturn") {
+              sunVideo.style.transform = `translateX(-50%) scale(1)`;
               globe.src = "assets/globs/Saturn.webm";
             } else if (planet == "Uranus") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Uranus.webm";
             } else if (planet == "Neptune") {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Neptune.webm";
               globe.classList.add("fade-down-left");
             } else {
+              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/sun.webm";
             }
 
@@ -584,8 +796,27 @@
               sectionTitle.classList.add("fade-in");
               sectionSubtitle.classList.add("fade-in");
               sectionDescription.classList.add("fade-in");
-            }, 200); // Match this duration with the CSS transition duration*/
+            }, 100); // Match this duration with the CSS transition duration*/
           });
+        });
+      });
+    </script>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+      });
+
+      // Close menu when clicking a link
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("active");
         });
       });
     </script>

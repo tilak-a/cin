@@ -1,4 +1,6 @@
 /* Section 3 styling */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 .section3 {
   position: relative;
   height: 100vh;
@@ -17,6 +19,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  font-family: "Marcellus", serif;
 }
 
 .section3 .text {
@@ -30,25 +33,30 @@
 }
 
 .section3 .text h1 {
-  margin-top: 150px;
+  margin-top: 15rem;
   font-weight: normal;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  font-size: 3rem;
+  margin-bottom: 5px;
+  font-size: 1.35rem;
+  font-weight: 400;
 }
 
 .section3 .text h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   word-spacing: 2px;
   letter-spacing: 1px;
+  margin-top: 4px;
 }
 
 .section3 .text p {
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   margin-top: 50px;
   padding-left: 100px;
   padding-right: 100px;
+  line-height: 1.25;
+  letter-spacing: 2px;
+  word-spacing: 3px;
 }
 
 /* Globe styling */
@@ -73,7 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 510px; /* Half of the diameter */
+  height: 490px; /* Half of the diameter */
   width: 1020px; /* Full diameter */
   margin: 0 auto; /* Center the container */
   z-index: 10;
@@ -92,7 +100,8 @@
   position: absolute; /* To be positioned by JavaScript */
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   /* margin: 5px 0px; */
   transform-origin: center;
   transition: transform 0.3s ease, color 0.3s ease;
@@ -103,10 +112,10 @@
   /* Highlight color */
 }
 .section3 .text #section-default-title {
-  margin-top: 250px;
+  margin-top: 27rem;
   color: #ffffff;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 4rem;
   transition: opacity 5s ease, transform 5s ease;
 }
 
@@ -193,19 +202,22 @@
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .section3 .text h1 {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .section3 .text #section-default-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .section3 .text h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .section3 .text p {
     font-size: 1rem;
+    line-height: 1;
+    word-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .section3 #current-globe {
@@ -214,21 +226,24 @@
   }
 
   #section-title {
-    font-size: 2rem !important;
+    font-size: 1rem !important;
     margin-bottom: 10px;
     /* font-weight: bold; */
   }
 
   #section-subtitle {
-    font-size: 1.5rem !important;
+    font-size: 1.35rem !important;
     margin-bottom: 10px;
   }
 
   #section-description {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
     margin-top: 0px;
     padding-left: 20px;
     padding-right: 20px;
+    line-height: 1.1;
+    word-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .section3 .planet-container {
@@ -251,7 +266,7 @@
   position: absolute;
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.55rem;
+  font-size: 1rem;
   transform-origin: center;
   transition: all 0.3s ease;
   opacity: 0.7;

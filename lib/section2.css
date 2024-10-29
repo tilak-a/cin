@@ -1,4 +1,6 @@
 /* Section 2 styling */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 .section2 {
   /* position: relative; */
   /* Section 2 background */
@@ -31,6 +33,7 @@
   position: relative;
   z-index: 1;
   padding: 50px;
+  font-family: "Marcellus", serif;
 }
 
 .section2 .text {
@@ -40,29 +43,39 @@
   /* Adjust text color */
   font-size: 1.2rem;
   margin-left: 50px;
+  max-height: 75vh;
 }
 
 .section2 .text h1 {
-  font-size: 3rem;
+  font-size: 2.85rem;
   text-transform: uppercase;
   /* Adjust the size as needed */
   margin-bottom: 10px;
   color: #ffffff;
+  word-spacing: 4px;
+  font-weight: 600;
+  letter-spacing: 3px;
 }
 
 .section2 .text h2 {
   font-size: 2rem;
   /* Adjust the size as needed */
   margin-bottom: 10px;
+  margin-top: 10px;
   color: #ffffff;
+  letter-spacing: 2px;
+  font-weight: 500;
 }
 
 .section2 .text p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   /* Adjust the size as needed */
   margin-bottom: 10px;
   /* text-align: justify; */
   color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .section2 .image {
@@ -109,20 +122,24 @@
 
   .section2 .text {
     padding: 2px 5px;
-    width: 100%;
+    width: 60%;
     margin-left: 10px;
+    /* height: 80vh; */
   }
 
   .section2 .text h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 
   .section2 .text h2 {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .section2 .text p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 1.2;
   }
 
   .section2-content {
@@ -132,5 +149,21 @@
   #small-globe {
     width: 60%;
     margin: 20px auto 0 auto;
+  }
+}
+
+@media (max-width: 508px) {
+  .section2 .text {
+    padding: 2px 5px;
+    width: 100%;
+    margin-left: 10px;
+    height: 80vh;
+  }
+
+  .section2 .text p {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    line-height: 1.1;
   }
 }
