@@ -672,12 +672,14 @@
         const screenHeight = window.innerHeight;
 
         const ismobile = window.matchMedia("(max-width: 520px)").matches;
+        const is1400 = window.matchMedia("(min-width: 1400px)").matches;
 
         // Dynamically set the diameter and radius based on the viewport size
         let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75; // Set the arc diameter to 80% of the smallest dimension
         if (ismobile) {
           arcDiameter = Math.min(screenWidth, screenHeight) * 0.7;
         }
+
         const arcRadius = arcDiameter / 2;
 
         // Positioning planets in an arc
