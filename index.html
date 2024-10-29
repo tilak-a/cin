@@ -773,7 +773,24 @@
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Jupiter.webm";
             } else if (planet == "Saturn") {
-              sunVideo.style.transform = `translateX(-50%) scale(1)`;
+              // sunVideo.style.transform = `translateX(-50%) scale(1)`;
+
+              // globe.src = "assets/globs/Saturn.webm";
+              sunVideo.style.transform = `translateX(-50%) scale(0.2)`;
+
+              // Grow to full size
+              setTimeout(() => {
+                console.log("runnn");
+
+                sunVideo.style.transition =
+                  "transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+                sunVideo.style.transform = `translateX(-50%) scale(1)`;
+              }, 300);
+
+              // Reset transition timing
+              setTimeout(() => {
+                sunVideo.style.transition = "0.5s ease-out";
+              }, 900);
               globe.src = "assets/globs/Saturn.webm";
             } else if (planet == "Uranus") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
