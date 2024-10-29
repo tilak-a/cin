@@ -340,7 +340,12 @@
       </video>
     </div>
 
-    <header class="header1">
+    <header
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-center"
+      data-aos-duration="1500"
+      class="header1"
+    >
       <nav class="nav-container">
         <div class="nav-links">
           <div class="left-links">
@@ -395,13 +400,13 @@
       </video>
 
       <div class="header">
-        <img
+        <!-- <img
           data-aos="fade-down"
           data-aos-anchor-placement="top-center"
           data-aos-duration="500"
           src="assets/cin-logo.png"
           alt=""
-        />
+        /> -->
         <h1 data-aos="zoom-in" data-aos-duration="1500">
           creativity in nature
         </h1>
@@ -782,8 +787,6 @@
 
               // Grow to full size
               setTimeout(() => {
-                console.log("runnn");
-
                 sunVideo.style.transition =
                   "transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
                 sunVideo.style.transform = `translateX(-50%) scale(1)`;
