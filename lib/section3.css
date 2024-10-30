@@ -313,8 +313,12 @@
     margin: 0;
   }
   .section3 .planet-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: auto;
-    margin-left: 10px;
+    margin-left: 7px;
     padding-left: env(display-cutout-safe-area-inset-left);
     padding-right: env(display-cutout-safe-area-inset-right);
     padding-bottom: env(display-cutout-safe-area-inset-bottom);
