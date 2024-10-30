@@ -19,6 +19,7 @@
         scroll-snap-type: y mandatory;
         /* background-color: black; */
         /*overflow-x: hidden;*/
+        margin: 0px !important;
       }
       .section {
         transition: opacity 0.5s ease;
@@ -39,6 +40,29 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        /* scroll-behavior: smooth; */
+        transition: transform 7s ease;
+      }
+
+      .section11 {
+        transition: opacity 0.5s ease;
+      }
+
+      .section11:not([style*="display: none"]) {
+        opacity: 1;
+      }
+
+      .section11[style*="display: none"] {
+        opacity: 0;
+      }
+      .section11 {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
         /* scroll-behavior: smooth; */
         transition: transform 7s ease;
       }
@@ -121,6 +145,10 @@
       .hidden {
         opacity: 0;
         pointer-events: none;
+      }
+
+      .newhidden {
+        opacity: 0;
       }
 
       .nav-container {
@@ -337,6 +365,7 @@
       data-aos-anchor-placement="top-center"
       data-aos-duration="1500"
       class="header1"
+      id="header1"
     >
       <nav class="nav-container">
         <div class="nav-links">
@@ -538,12 +567,12 @@
         <source src="assets/vid2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <video muted loop id="video-2" class="video-bg hidden">
+      <video autoplay muted loop id="video-22" class="video-bg2">
         <source src="assets/sect-4-bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <div id="section4-content" class="content hidden">
+      <div id="section4-content" class="content newhidden">
         <div class="planet-container">
           <img
             data-aos="zoom-in"
@@ -590,11 +619,30 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <footer class="footer">
-        <div class="footer-content">
-          <!-- <h2>Your Footer Title</h2> -->
-          <p>&copy; 2024 CIN. All rights reserved.</p>
+    </section>
+
+    <section id="section6" class="section11 section6">
+      <footer class="footer-container">
+        <div class="footer-flex">
+          <div>
+            <img class="logo-footer" src="assets/cin-logo.png" alt="logo" />
+          </div>
+          <div class="footer-links">
+            <a class="alink" href="#home">Home</a>
+            <a class="alink" href="#about">About Us</a>
+            <a class="alink" href="#why">Why Choose Us</a>
+            <a class="alink" href="#services">Our Services</a>
+          </div>
+          <div class="footer-links">
+            <a class="alink" href="#clients">Clients</a>
+            <a class="alink" href="#portfolio">Our Portfolio</a>
+            <a class="alink" href="#segments">Segments</a>
+            <a class="alink" href="#contact">Contact Us</a>
+          </div>
         </div>
+        <p style="text-align: center">
+          &copy; 2024 Your Company Name. All rights reserved.
+        </p>
       </footer>
     </section>
 
@@ -640,7 +688,8 @@
             y + 5
           }px) rotate(${angle + 90}deg)`;
           link.style.bottom = "15px";
-          link.style.marginLeft = "5px";
+          link.style.marginLeft =
+            index == 0 ? "0px" : index == 7 ? "-6px" : "5px";
           link.style.fontWeight = "2rem";
           link.style.left = "50%";
           link.style.zIndex = "10";
@@ -691,16 +740,13 @@
           const y = arcRadius * Math.sin((angle * Math.PI) / 180);
 
           // Rotate each link based on its angle to follow the arc curvature
-          link.style.transform = `translate(${x - 20}px, ${y + 5}px) rotate(${
-            angle + 90
-          }deg)`;
-          if (ismobile) {
-            link.style.transform = `translate(${x - 30}px, ${y + 5}px) rotate(${
-              angle + 90
-            }deg)`;
-          }
+          link.style.transform = `translate(${x - (ismobile ? 30 : 20)}px, ${
+            y + 5
+          }px) rotate(${angle + 90}deg)`;
+
           link.style.bottom = "15px";
-          link.style.marginLeft = "5px";
+          link.style.marginLeft =
+            index == 0 ? "0px" : index == 7 ? "-6px" : "5px";
           link.style.fontWeight = "2rem";
           link.style.left = "50%";
           link.style.zIndex = 10;

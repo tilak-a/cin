@@ -47,6 +47,7 @@ body {
 html,
 body {
   height: 100% !important;
+  margin: 0px !important;
 }
 
 .h-100 {
