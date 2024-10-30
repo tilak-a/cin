@@ -300,6 +300,20 @@
   pointer-events: none;
 }
 
+@media (max-width: 508px) {
+  .section3 {
+    position: relative;
+    height: 100dvh;
+    /* background: url('../assets/section2/bg_vid_2_after.JPG') center/cover no-repeat; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+}
+
 @supports (-webkit-touch-callout: none) {
   .section3 .planet-container {
     bottom: env(safe-area-inset-bottom);
