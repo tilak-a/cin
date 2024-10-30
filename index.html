@@ -215,6 +215,26 @@
         width: 100%;
       }
 
+      .footer-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #ca910b;
+        left: 50%;
+        bottom: -3px;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ca910b;
+      }
+
+      .footer-links a:hover::after {
+        width: 100%;
+      }
+
       .logo-nav {
         max-width: 180px;
         height: auto;
