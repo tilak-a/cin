@@ -742,7 +742,7 @@
           // Rotate each link based on its angle to follow the arc curvature
           link.style.transform = `translate(${x - (ismobile ? 30 : 20)}px, ${
             y + 5
-          }px) rotate(${angle + 90}deg)`;
+          }px) rotate(${index == 7 ? angle + 87 : angle + 90}deg)`;
 
           link.style.bottom = "15px";
           link.style.marginLeft =
