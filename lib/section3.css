@@ -312,6 +312,13 @@
     padding: 0;
     margin: 0;
   }
+  .section3 .planet-container {
+    width: auto;
+    margin-left: 10px;
+    padding-left: env(display-cutout-safe-area-inset-left);
+    padding-right: env(display-cutout-safe-area-inset-right);
+    padding-bottom: env(display-cutout-safe-area-inset-bottom);
+  }
 }
 
 @supports (-webkit-touch-callout: none) {
