@@ -369,6 +369,30 @@
           width: 100%;
         }
       }
+      video {
+        /* Remove default background */
+        background: transparent;
+        mix-blend-mode: screen;
+
+        /* For Safari */
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+        /* For better compatibility across browsers */
+        mask-image: radial-gradient(white, black);
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        /* Safari specific styles */
+        .myvid1 {
+          mix-blend-mode: normal;
+        }
+      }
+      /* Optional: If you still see black background in some cases */
+      video::-webkit-media-controls-panel,
+      video::-webkit-media-controls-overlay-play-button {
+        display: none !important;
+        -webkit-appearance: none;
+      }
     </style>
   </head>
   <body>
@@ -428,16 +452,14 @@
     </header>
     <!-- Section1 -->
     <section id="section1" class="section section1">
-      <video
-        playsinline
-        autoplay
-        loop
-        muted
-        class="myvid1"
-        id="sunVideo"
-        src="assets/globs/sun.webm"
-      >
-        <source src="images/sun.webm" type="video/webm" />
+      <video playsinline autoplay loop muted class="myvid1" id="sunVideo">
+        <source
+          src="assets/globs/sun.hevc.mp4"
+          type='video/mp4; codecs="hvc1"'
+        />
+        <source src="assets/globs/sun.webm" type="video/webm" />
+        <!-- <source src="assets/globs/sun.webm" type="video/webm" />
+        <source src="assets/globs/sun.hevc.mp4" type="video/mp4" /> -->
       </video>
 
       <div class="header">
@@ -748,6 +770,13 @@
 
         const arcRadius = arcDiameter / 2;
 
+        function isIOS() {
+          return (
+            /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+            (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+          );
+        }
+
         // Positioning planets in an arc
         const totalPlanets = planetLinks.length;
         const angleStep = 180 / (totalPlanets - 1); // Angle step to distribute planets across the arc (half-circle)
@@ -822,21 +851,36 @@
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.classList.add("fade-down-left");
               setTimeout(() => {
-                globe.src = "assets/globs/Mercury.webm";
+                globe.src = isIOS()
+                  ? "assets/globs/Mercury.hevc.mp4"
+                  : "assets/globs/Mercury.webm";
+                // globe.src = "assets/globs/Mercury.webm";
               }, 200);
             } else if (planet == "Venus") {
               globe.classList.add("fade-down-left");
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Venus.webm";
+              // globe.src = "assets/globs/Venus.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Venus.hevc.mp4"
+                : "assets/globs/Venus.webm";
             } else if (planet == "Earth") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Earth.webm";
+              // globe.src = "assets/globs/Earth.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Earth.hevc.mp4"
+                : "assets/globs/Earth.webm";
             } else if (planet == "Mars") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Mars.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Mars.hevc.mp4"
+                : "assets/globs/Mars.webm";
             } else if (planet == "Jupiter") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Jupiter.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Jupiter.hevc.mp4"
+                : "assets/globs/Jupiter.webm";
+              // globe.src = "assets/globs/Jupiter.webm";
             } else if (planet == "Saturn") {
               // sunVideo.style.transform = `translateX(-50%) scale(1)`;
 
@@ -854,17 +898,26 @@
               setTimeout(() => {
                 sunVideo.style.transition = "0.5s ease-out";
               }, 900);
-              globe.src = "assets/globs/Saturn.webm";
+              // globe.src = "assets/globs/Saturn.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Saturn.hevc.mp4"
+                : "assets/globs/Saturn.webm";
             } else if (planet == "Uranus") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Uranus.webm";
             } else if (planet == "Neptune") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Neptune.webm";
+              // globe.src = "assets/globs/Neptune.webm";
+              globe.src = isIOS()
+                ? "assets/globs/Neptune.hevc.mp4"
+                : "assets/globs/Neptune.webm";
               globe.classList.add("fade-down-left");
             } else {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/sun.webm";
+              // globe.src = "assets/globs/sun.webm";
+              globe.src = isIOS()
+                ? "assets/globs/sun.hevc.mp4"
+                : "assets/globs/sun.webm";
             }
 
             // Wait for transition to finish before updating text

@@ -299,3 +299,13 @@
   opacity: 0;
   pointer-events: none;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .section3 .planet-container {
+    bottom: env(safe-area-inset-bottom);
+  }
+
+  .myvid1 {
+    bottom: env(safe-area-inset-bottom);
+  }
+}
