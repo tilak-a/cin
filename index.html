@@ -781,15 +781,6 @@
         );
         const planetLinks = document.querySelectorAll(".planet-links a");
         const sunVideo = document.getElementById("sunVideo");
-        function isIOS() {
-          const userAgent = navigator.userAgent;
-          return userAgent.includes("Safari") && !userAgent.includes("Chrome");
-        }
-
-        if (isIOS()) {
-          sunVideo.src = "assets/globs/sun.hevc.mp4";
-          globe.src = "assets/globs/sun.hevc.mp4";
-        }
 
         // Diameter and radius of the circular arc
         // const arcDiameter = 570; // Arc diameter
@@ -950,6 +941,17 @@
                 : "assets/globs/sun.webm";
             }
 
+            function isIOS() {
+              const userAgent = navigator.userAgent;
+              return (
+                userAgent.includes("Safari") && !userAgent.includes("Chrome")
+              );
+            }
+
+            if (isIOS()) {
+              sunVideo.src = "assets/globs/sun.hevc.mp4";
+              globe.src = "assets/globs/sun.hevc.mp4";
+            }
             // Wait for transition to finish before updating text
             setTimeout(() => {
               sectionTitle.textContent = planet;
