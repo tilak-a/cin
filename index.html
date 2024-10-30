@@ -459,10 +459,10 @@
     <!-- Section1 -->
     <section id="section1" class="section section1">
       <video playsinline autoplay loop muted class="myvid1" id="sunVideo">
-        <source
+        <!-- <source
           src="assets/globs/sun.hevc.mp4"
           type='video/mp4; codecs="hvc1"'
-        />
+        /> -->
         <source src="assets/globs/sun.webm" type="video/webm" />
         <!-- <source src="assets/globs/sun.webm" type="video/webm" />
         <source src="assets/globs/sun.hevc.mp4" type="video/mp4" /> -->
@@ -780,6 +780,16 @@
           "section-description"
         );
         const planetLinks = document.querySelectorAll(".planet-links a");
+        const sunVideo = document.getElementById("sunVideo");
+        function isIOS() {
+          const userAgent = navigator.userAgent;
+          return userAgent.includes("Safari") && !userAgent.includes("Chrome");
+        }
+
+        if (isIOS()) {
+          sunVideo.src = "assets/globs/sun.hevc.mp4";
+          globe.src = "assets/globs/sun.hevc.mp4";
+        }
 
         // Diameter and radius of the circular arc
         // const arcDiameter = 570; // Arc diameter
@@ -797,13 +807,6 @@
         }
 
         const arcRadius = arcDiameter / 2;
-
-        function isIOS() {
-          return (
-            /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-            (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
-          );
-        }
 
         // Positioning planets in an arc
         const totalPlanets = planetLinks.length;
@@ -871,7 +874,6 @@
             // }, 300); // Delay for the transition effect
 
             // Get data attributes from the clicked link
-            const sunVideo = document.getElementById("sunVideo");
             const planet = this.getAttribute("data-planet");
             const subtitle = this.getAttribute("data-subtitle");
             const description = this.getAttribute("data-description");
