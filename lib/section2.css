@@ -153,6 +153,10 @@
 }
 
 @media (max-width: 508px) {
+  .section2-content {
+    margin-top: 1rem;
+  }
+
   .section2 .text {
     padding: 2px 5px;
     width: 100%;
@@ -161,9 +165,9 @@
   }
 
   .section2 .text p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.2;
   }
 }

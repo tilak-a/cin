@@ -139,6 +139,10 @@
         .myvid1 {
           bottom: -100px;
         }
+
+        .section11 {
+          min-height: 60vh;
+        }
       }
 
       .myvid1.section2-position {
@@ -328,10 +332,10 @@
 
         .mobile-menu {
           position: fixed;
-          top: 0;
+          top: -10px;
           left: -1rem;
-          width: 100%;
-          height: 100vh;
+          width: 110%;
+          height: 110vh;
           background: black;
           display: flex;
           flex-direction: column;
@@ -373,6 +377,10 @@
 
         .mobile-menu a:hover::after {
           width: 100%;
+        }
+
+        .copyright {
+          margin-top: 1.5rem;
         }
       }
       video {
@@ -644,7 +652,7 @@
             alt="Current Globe"
             class="sect4-logo"
           />
-          <div class="services">
+          <div class="services" id="service1">
             <a href="#" class="service">PAY PER CLICK</a>
             <a href="#" class="service">REVENUE <br />MANAGEMENT</a>
             <a href="#" class="service">CREATIVE DESIGN</a>
@@ -710,7 +718,7 @@
             <a class="alink" href="#contact">Contact Us</a>
           </div>
         </div>
-        <p style="text-align: center">
+        <p class="copyright" style="text-align: center">
           &copy; 2024 Your Company Name. All rights reserved.
         </p>
       </footer>
@@ -732,6 +740,11 @@
     <script>
       AOS.init();
 
+      const service1 = document.getElementById("service1");
+      service1.onclick = function () {
+        console.log("clicked");
+      };
+
       function updatePlanetPositions() {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -739,9 +752,9 @@
         const planetLinks = document.querySelectorAll(".planet-links a");
 
         // Dynamically set the diameter and radius
-        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75;
+        let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75; // Set the arc diameter to 80% of the smallest dimension
         if (ismobile) {
-          arcDiameter = Math.min(screenWidth, screenHeight) * 0.75;
+          arcDiameter = Math.min(screenWidth, screenHeight) * 0.65;
         }
         const arcRadius = arcDiameter / 2;
 
@@ -754,9 +767,11 @@
           const x = arcRadius * Math.cos((angle * Math.PI) / 180);
           const y = arcRadius * Math.sin((angle * Math.PI) / 180);
 
-          link.style.transform = `translate(${x - (ismobile ? 30 : 20)}px, ${
-            y + 5
-          }px) rotate(${angle + 90}deg)`;
+          link.style.transform = `translate(${
+            x - (ismobile ? (index == 7 ? 20 : 24) : 20)
+          }px, ${y + (ismobile && index == 7 ? 11.5 : 5)}px) rotate(${
+            index == 7 && !ismobile ? angle + 87 : angle + 90
+          }deg)`;
           link.style.bottom = "15px";
           link.style.marginLeft =
             index == 0 ? "0px" : index == 7 ? "-6px" : "5px";
@@ -794,7 +809,7 @@
         // Dynamically set the diameter and radius based on the viewport size
         let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75; // Set the arc diameter to 80% of the smallest dimension
         if (ismobile) {
-          arcDiameter = Math.min(screenWidth, screenHeight) * 0.77;
+          arcDiameter = Math.min(screenWidth, screenHeight) * 0.65;
         }
 
         const arcRadius = arcDiameter / 2;
@@ -811,9 +826,11 @@
           const y = arcRadius * Math.sin((angle * Math.PI) / 180);
 
           // Rotate each link based on its angle to follow the arc curvature
-          link.style.transform = `translate(${x - (ismobile ? 30 : 20)}px, ${
-            y + 5
-          }px) rotate(${index == 7 ? angle + 87 : angle + 90}deg)`;
+          link.style.transform = `translate(${
+            x - (ismobile ? (index == 7 ? 20 : 24) : 20)
+          }px, ${y + (ismobile && index == 7 ? 11.5 : 5)}px) rotate(${
+            index == 7 && !ismobile ? angle + 87 : angle + 90
+          }deg)`;
 
           link.style.bottom = "15px";
           link.style.marginLeft =
