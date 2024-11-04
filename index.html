@@ -967,9 +967,10 @@
             } else if (planet == "Earth") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               // globe.src = "assets/globs/Earth.webm";
-              globe.src = isIOS()
-                ? "assets/globs/Earth.mov"
-                : "assets/globs/Earth.webm";
+              globe.src =
+                isIOS() || isAppleDevice()
+                  ? "assets/globs/Earth.mov"
+                  : "assets/globs/Earth.webm";
             } else if (planet == "Mars") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Mars.webm";
@@ -1020,6 +1021,12 @@
                 ? "assets/globs/sun.hevc.mp4"
                 : "assets/globs/sun.webm";
             }
+
+            function isAppleDevice() {
+              return /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+            }
+
+            console.log("is safari", isAppleDevice());
 
             function isIOS() {
               const userAgent = navigator.userAgent;
