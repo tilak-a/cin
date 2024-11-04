@@ -740,11 +740,6 @@
     <script>
       AOS.init();
 
-      const service1 = document.getElementById("service1");
-      service1.onclick = function () {
-        console.log("clicked");
-      };
-
       function updatePlanetPositions() {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -805,6 +800,30 @@
 
         const ismobile = window.matchMedia("(max-width: 520px)").matches;
         const is1400 = window.matchMedia("(min-width: 1400px)").matches;
+
+        const service1 = document.getElementById("service1");
+        service1.onclick = function (event) {
+          if (ismobile) {
+            // Prevent clicking the container from triggering multiple times
+            if (event.target === event.currentTarget) {
+              return;
+            }
+
+            // Get the clicked service link
+            const clickedLink = event.target.closest("a");
+            if (clickedLink) {
+              // Get the href attribute
+              const href = clickedLink.getAttribute("href");
+
+              // Navigate to the href (you can modify this based on your needs)
+              if (href) {
+                window.location.href = href;
+                // Or for smooth scrolling to an element:
+                // document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }
+        };
 
         // Dynamically set the diameter and radius based on the viewport size
         let arcDiameter = Math.min(screenWidth, screenHeight) * 0.75; // Set the arc diameter to 80% of the smallest dimension
