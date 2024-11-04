@@ -383,30 +383,6 @@
           margin-top: 1.5rem;
         }
       }
-      video {
-        /* Remove default background */
-        background: transparent;
-        mix-blend-mode: screen;
-
-        /* For Safari */
-        -webkit-mask-image: -webkit-radial-gradient(white, black);
-
-        /* For better compatibility across browsers */
-        mask-image: radial-gradient(white, black);
-      }
-
-      @supports (-webkit-touch-callout: none) {
-        /* Safari specific styles */
-        .myvid1 {
-          mix-blend-mode: normal;
-        }
-      }
-      /* Optional: If you still see black background in some cases */
-      video::-webkit-media-controls-panel,
-      video::-webkit-media-controls-overlay-play-button {
-        display: none !important;
-        -webkit-appearance: none;
-      }
     </style>
   </head>
   <body>
