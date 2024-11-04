@@ -164,18 +164,24 @@
 }
 
 /* Service 2: INFLUENCER MARKETING */
+
 .services .service:nth-child(2) {
-  transform: rotate(40deg) translate(100px, -50px) rotate(-40deg);
+  transform: rotate(0deg) translate(100px, -50px) rotate(-0deg);
 }
 
+@media ((min-width: 1408px) and (max-width: 1800px)) {
+  .services .service:nth-child(2) {
+    transform: rotate(40deg) translate(100px, -50px) rotate(-40deg);
+  }
+}
 /* Service 3: CREATIVE DESIGN */
 .services .service:nth-child(3) {
-  transform: rotate(320deg) translate(500px, -60px) rotate(-320deg);
+  transform: rotate(320deg) translate(500px, -10px) rotate(-320deg);
 }
 
 /* Service 4: aaa */
 .services .service:nth-child(4) {
-  transform: rotate(160deg) translate(80px, 50px) rotate(-160deg);
+  transform: rotate(160deg) translate(80px, 70px) rotate(-160deg);
 }
 
 /* Service 5: PAY PER CLICK */
@@ -192,12 +198,14 @@
 /* Service 7: REVENUE MANAGEMENT */
 .services .service:nth-child(7) {
   transform: rotate(280deg) translate(450px, -80px) rotate(-280deg);
+  padding-bottom: 2rem;
   /* transform: rotate(240deg) translate(550px, -10px) rotate(-240deg); */
 }
 
 /* Service 8: WEBSITE DESIGN */
 .services .service:nth-child(8) {
   transform: rotate(280deg) translate(475px, 100px) rotate(-280deg);
+  padding-bottom: 2rem;
 }
 
 /* Service 9: ONLINE REPUTATION MANAGEMENT */
@@ -370,7 +378,7 @@
 @media (max-width: 480px) {
   .video-bg {
     object-fit: fill;
-    visibility: hidden !important;
+    /* visibility: hidden !important; */
     /* object-fit: fill;
     position: absolute;
     top: 50%;
