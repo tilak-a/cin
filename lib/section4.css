@@ -370,6 +370,32 @@
     margin-left: 0;
     margin-bottom: -20px;
   }
+
+  .service {
+    -webkit-tap-highlight-color: transparent; /* For iOS Safari */
+    -webkit-touch-callout: none; /* Disable callout on iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    user-select: none; /* Standard syntax */
+    outline: none; /* Remove outline on focus */
+  }
+
+  /* For Firefox */
+  .service::-moz-focus-inner {
+    border: 0;
+  }
+
+  /* If you still see blue outline on focus in some browsers */
+  .service:focus {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .services {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
 }
 
 .video-bg2 {
