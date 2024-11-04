@@ -95,6 +95,12 @@
     align-items: center;
   }
 
+  .footer-links {
+    width: 200px;
+    margin: 1rem;
+    text-align: center;
+  }
+
   .section6 {
     position: relative;
     overflow: hidden;
