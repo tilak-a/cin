@@ -225,7 +225,7 @@
         width: 100%;
       }
 
-      .footer-links a::after {
+      /* .footer-links a::after {
         content: "";
         position: absolute;
         width: 0;
@@ -235,7 +235,7 @@
         bottom: -3px;
         transform: translateX(-50%);
         transition: width 0.3s ease;
-      }
+      } */
 
       .footer-links a:hover {
         color: #ca910b;
@@ -969,7 +969,7 @@
               // globe.src = "assets/globs/Earth.webm";
               globe.src = isIOS()
                 ? "assets/globs/Earth.hevc.mp4"
-                : "assets/globs/Earth.webm";
+                : "assets/globs/Earth.mov";
             } else if (planet == "Mars") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               globe.src = "assets/globs/Mars.webm";
