@@ -465,7 +465,16 @@
     </header>
     <!-- Section1 -->
     <section id="section1" class="section section1">
-      <video playsinline autoplay loop muted class="myvid1" id="sunVideo">
+      <video
+        data-planet="Sun"
+        playsinline
+        autoplay
+        loop
+        muted
+        class="myvid1"
+        id="sunVideo"
+      >
+        <!-- <source src="assets/globs/sunoutputnew.mov" /> -->
         <source src="assets/globs/sun.webm" />
       </video>
 
@@ -844,6 +853,25 @@
     <script>
       AOS.init();
 
+      function supportsHEVCAlpha() {
+        const navigator = window.navigator;
+        const ua = navigator.userAgent.toLowerCase();
+        const hasMediaCapabilities = !!(
+          navigator.mediaCapabilities &&
+          navigator.mediaCapabilities.decodingInfo
+        );
+        const isSafari =
+          ua.indexOf("safari") != -1 &&
+          !(ua.indexOf("chrome") != -1) &&
+          ua.indexOf("version/") != -1;
+
+        return isSafari && hasMediaCapabilities;
+      }
+
+      function isIE11() {
+        return !!window.navigator.userAgent.match(/Trident\/7\./, []);
+      }
+
       function updatePlanetPositions() {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -1008,93 +1036,97 @@
             const planet = this.getAttribute("data-planet");
             const subtitle = this.getAttribute("data-subtitle");
             const description = this.getAttribute("data-description");
-            if (planet == "Mercury") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.classList.add("fade-down-left");
-              setTimeout(() => {
-                globe.src = isIOS()
-                  ? "assets/globs/Mercury.hevc.mp4"
-                  : "assets/globs/Mercury.webm";
-                // globe.src = "assets/globs/Mercury.webm";
-              }, 200);
-            } else if (planet == "Venus") {
-              globe.classList.add("fade-down-left");
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              // globe.src = "assets/globs/Venus.webm";
-              globe.src = isIOS()
-                ? "assets/globs/Venus.hevc.mp4"
-                : "assets/globs/Venus.webm";
-            } else if (planet == "Earth") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              // globe.src = "assets/globs/Earth.webm";
-              globe.src = isIOS()
-                ? "assets/globs/earthouputnew.mov"
-                : "assets/globs/Earth.webm";
-            } else if (planet == "Mars") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Mars.webm";
-              globe.src = isIOS()
-                ? "assets/globs/Mars.hevc.mp4"
-                : "assets/globs/Mars.webm";
-            } else if (planet == "Jupiter") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = isIOS()
-                ? "assets/globs/Jupiter.hevc.mp4"
-                : "assets/globs/Jupiter.webm";
-              // globe.src = "assets/globs/Jupiter.webm";
-            } else if (planet == "Saturn") {
-              // sunVideo.style.transform = `translateX(-50%) scale(1)`;
+            if (!isIE11()) {
+              if (planet == "Mercury") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                globe.classList.add("fade-down-left");
+                setTimeout(() => {
+                  globe.src = supportsHEVCAlpha()
+                    ? "assets/globs/mercuryoutputnew.mov"
+                    : "assets/globs/Mercury.webm";
+                  // globe.src = "assets/globs/Mercury.webm";
+                }, 200);
+              } else if (planet == "Venus") {
+                globe.classList.add("fade-down-left");
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                // globe.src = "assets/globs/Venus.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/venusoutputnew.mov"
+                  : "assets/globs/Venus.webm";
+              } else if (planet == "Earth") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                // globe.src = "assets/globs/Earth.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/earthouputnew.mov"
+                  : "assets/globs/Earth.webm";
+              } else if (planet == "Mars") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                // globe.src = "assets/globs/Mars.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/marsoutputnew.mov"
+                  : "assets/globs/Mars.webm";
+              } else if (planet == "Jupiter") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/jupiteroutputnew.mov"
+                  : "assets/globs/Jupiter.webm";
+                // globe.src = "assets/globs/Jupiter.webm";
+              } else if (planet == "Saturn") {
+                // sunVideo.style.transform = `translateX(-50%) scale(1)`;
 
-              // globe.src = "assets/globs/Saturn.webm";
-              sunVideo.style.transform = `translateX(-50%) scale(0.2)`;
+                // globe.src = "assets/globs/Saturn.webm";
+                sunVideo.style.transform = `translateX(-50%) scale(0.2)`;
 
-              // Grow to full size
-              setTimeout(() => {
-                sunVideo.style.transition =
-                  "transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
-                sunVideo.style.transform = `translateX(-50%) scale(1)`;
-              }, 300);
+                // Grow to full size
+                setTimeout(() => {
+                  sunVideo.style.transition =
+                    "transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+                  sunVideo.style.transform = `translateX(-50%) scale(1)`;
+                }, 300);
 
-              // Reset transition timing
-              setTimeout(() => {
-                sunVideo.style.transition = "0.5s ease-out";
-              }, 900);
-              // globe.src = "assets/globs/Saturn.webm";
-              globe.src = isIOS()
-                ? "assets/globs/Saturn.hevc.mp4"
-                : "assets/globs/Saturn.webm";
-            } else if (planet == "Uranus") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              globe.src = "assets/globs/Uranus.webm";
-            } else if (planet == "Neptune") {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              // globe.src = "assets/globs/Neptune.webm";
-              globe.src = isIOS()
-                ? "assets/globs/Neptune.hevc.mp4"
-                : "assets/globs/Neptune.webm";
-              globe.classList.add("fade-down-left");
-            } else {
-              sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
-              // globe.src = "assets/globs/sun.webm";
-              globe.src = isIOS()
-                ? "assets/globs/sun.hevc.mp4"
-                : "assets/globs/sun.webm";
+                // Reset transition timing
+                setTimeout(() => {
+                  sunVideo.style.transition = "0.5s ease-out";
+                }, 900);
+                // globe.src = "assets/globs/Saturn.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/saturnoutputnew.mov"
+                  : "assets/globs/Saturn.webm";
+              } else if (planet == "Uranus") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/uranusoutputnew.mov"
+                  : "assets/globs/Uranus.webm";
+              } else if (planet == "Neptune") {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                // globe.src = "assets/globs/Neptune.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/neptuneoutputnew.mov"
+                  : "assets/globs/Neptune.webm";
+                globe.classList.add("fade-down-left");
+              } else {
+                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                // globe.src = "assets/globs/sun.webm";
+                globe.src = supportsHEVCAlpha()
+                  ? "assets/globs/sunoutputnew.mov"
+                  : "assets/globs/sunoutputnew.webm";
+              }
             }
 
             function isAppleDevice() {
               return /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
             }
 
-            function isIOS() {
+            function supportsHEVCAlpha() {
               const userAgent = navigator.userAgent;
               return (
                 userAgent.includes("Safari") && !userAgent.includes("Chrome")
               );
             }
 
-            if (isIOS()) {
-              sunVideo.src = "assets/globs/sun.hevc.mp4";
-              globe.src = "assets/globs/sun.hevc.mp4";
+            if (supportsHEVCAlpha()) {
+              sunVideo.src = "assets/globs/sunoutputnew.mov";
+              globe.src = "assets/globs/sunoutputnew.mov";
             }
             // Wait for transition to finish before updating text
             setTimeout(() => {
@@ -1168,34 +1200,6 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(arrangeCircularMenu, 250);
       });
-    </script> -->
-
-    <!-- <script>
-      function supportsHEVCAlpha() {
-        const navigator = window.navigator;
-        const ua = navigator.userAgent.toLowerCase();
-        const hasMediaCapabilities = !!(
-          navigator.mediaCapabilities &&
-          navigator.mediaCapabilities.decodingInfo
-        );
-        const isSafari =
-          ua.indexOf("safari") != -1 &&
-          !(ua.indexOf("chrome") != -1) &&
-          ua.indexOf("version/") != -1;
-
-        return isSafari && hasMediaCapabilities;
-      }
-
-      function isIE11() {
-        return !!window.navigator.userAgent.match(/Trident\/7\./, []);
-      }
-
-      if (!isIE11()) {
-        const player = document.getElementById("player");
-        player.src = supportsHEVCAlpha()
-          ? "/assets/globs/earthouputnew.mov"
-          : "https://doggo.s3.amazonaws.com/output.webm";
-      }
     </script> -->
   </body>
 </html>
