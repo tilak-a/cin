@@ -1028,7 +1028,7 @@
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               // globe.src = "assets/globs/Earth.webm";
               globe.src = isIOS()
-                ? "https://res.cloudinary.com/dqr2et8oe/video/upload/v1730792400/r5bsfokf35wjfhkzlbvd.mov"
+                ? "assets/globs/earthouputnew.mov"
                 : "assets/globs/Earth.webm";
             } else if (planet == "Mars") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
@@ -1193,7 +1193,7 @@
       if (!isIE11()) {
         const player = document.getElementById("player");
         player.src = supportsHEVCAlpha()
-          ? "https://res.cloudinary.com/dqr2et8oe/video/upload/v1730792400/r5bsfokf35wjfhkzlbvd.mov"
+          ? "/assets/globs/earthouputnew.mov"
           : "https://doggo.s3.amazonaws.com/output.webm";
       }
     </script>
