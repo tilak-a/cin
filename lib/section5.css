@@ -3,7 +3,7 @@
 .section5 {
   position: relative;
   overflow: hidden;
-  height: 100vh; /* Full viewport height */
+  height: 165vh !important; /* Full viewport height */
 }
 
 .section6 {
@@ -17,7 +17,7 @@
 }
 
 .section5 .video-container {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -29,6 +29,26 @@
   width: 100%;
   height: 100%;
   object-fit: cover; /* Cover the entire section */
+  z-index: 1;
+}
+
+.fullscreen-video2 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+  z-index: 2;
+}
+
+.foott {
+  position: relative;
+  overflow: hidden;
+  height: 40vh; /* Full viewport height */
+  background-color: black !important;
+  padding-top: 2rem;
+  color: white;
+  z-index: 10;
 }
 
 .section6 .video-foot {
@@ -48,10 +68,11 @@
   width: 100%;
   height: max-content; /* 5% height for the footer */
   /* padding: 10px; */
-  background: rgba(0, 0, 0, 1); /* Semi-transparent background */
+  background: transparent; /* Semi-transparent background */
   color: white;
   padding-top: 2rem;
   padding-bottom: 8px;
+  z-index: 20;
   /* text-align: center; */
 }
 
@@ -109,5 +130,13 @@
     padding-top: 2rem;
     color: white;
     z-index: 10;
+  }
+}
+
+@media (max-width: 508px) {
+  .section5 {
+    position: relative;
+    overflow: hidden;
+    height: 180vh !important; /* Full viewport height */
   }
 }
