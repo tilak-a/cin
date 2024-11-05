@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin" />
+    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp" />
+
     <title>CIN-Web</title>
     <link href="lib/sec1-bot.css" rel="stylesheet" />
     <link href="lib/section1.css" rel="stylesheet" />
@@ -1025,7 +1028,7 @@
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
               // globe.src = "assets/globs/Earth.webm";
               globe.src = isIOS()
-                ? "assets/globs/earthouputnew.mov"
+                ? "https://res.cloudinary.com/dqr2et8oe/video/upload/v1730792400/r5bsfokf35wjfhkzlbvd.mov"
                 : "assets/globs/Earth.webm";
             } else if (planet == "Mars") {
               sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
@@ -1190,7 +1193,7 @@
       if (!isIE11()) {
         const player = document.getElementById("player");
         player.src = supportsHEVCAlpha()
-          ? "/assets/globs/earthouputnew.mov"
+          ? "https://res.cloudinary.com/dqr2et8oe/video/upload/v1730792400/r5bsfokf35wjfhkzlbvd.mov"
           : "https://doggo.s3.amazonaws.com/output.webm";
       }
     </script>
