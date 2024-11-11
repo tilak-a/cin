@@ -241,7 +241,7 @@
       } */
 
       .footer-links a:hover {
-        color: #ca910b;
+        color: #fff;
       }
 
       .footer-links a:hover::after {
@@ -249,7 +249,7 @@
       }
 
       .logo-nav {
-        max-width: 180px;
+        max-width: 135px;
         height: auto;
       }
 
@@ -474,7 +474,7 @@
         class="myvid1"
         id="sunVideo"
       >
-        <source src="assets/globs/sunoutputnew.mov" />
+        <source src="assets/globs/sunoutputnew.mov" type="video/quicktime" />
         <source src="assets/globs/sun.webm" />
       </video>
 
@@ -532,10 +532,6 @@
     </section>
 
     <!-- Section 3 -->
-    <!-- <video playsinline autoplay loop muted width="50%" class="myvideo2" id="vid">
-        <source src="images/sun.webm" type="video/webm">
-    </video> -->
-
     <section id="section3" class="section section3">
       <div class="section3-content">
         <div class="text">
@@ -629,7 +625,7 @@
         id="video-1"
         class="video-bg"
       >
-        <source src="assets/globs/services01.webm" />
+        <source src="assets/globs/services01.mp4" />
         Your browser does not support the video tag.
       </video>
       <video
@@ -643,30 +639,6 @@
         <source src="assets/globs/servives02.webm" />
         Your browser does not support the video tag.
       </video>
-
-      <!-- <video
-        playsinline
-        autoplay
-        muted
-        defaultMuted
-        id="video-1"
-        class="video-bg"
-      >
-        <source src="assets/vid2.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> -->
-      <!-- <video
-        playsinline
-        autoplay
-        muted
-        defaultMuted
-        loop
-        id="video-22"
-        class="video-bg2"
-      >
-        <source src="assets/sect-4-bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> -->
 
       <div id="section4-content" class="content newhidden">
         <div class="planet-container">
@@ -705,53 +677,10 @@
           </div>
         </div>
       </div>
-
-      <!-- <div id="content-new" class="content-new">
-        <div class="circle-container">
-          <img
-            src="assets/cin-logo.png"
-            alt="Current Globe"
-            class="logo-new animate-logo"
-          />
-          <div class="services-new" id="services-new">
-            <a href="#" class="service-new">PAY PER CLICK</a>
-            <a href="#" class="service-new">SOCIAL MEDIA <br />OPTIMISATION</a>
-            <a href="#" class="service-new"
-              >WEBSITE <br />
-              DESIGN</a
-            >
-
-            <a href="#" class="service-new">PHOTOGRAPHY / <br />VIDEOGRAPHY</a>
-
-            <a href="#" class="service-new">INFLUENCER <br />MARKETING</a>
-
-            <a href="#" class="service-new"
-              >ONLINE REPUTATION <br />MANAGEMENT</a
-            >
-            <a href="#" class="service-new"
-              >CREATIVE <br />
-              DESIGN</a
-            >
-
-            <a href="#" class="service-new">SEARCH ENGINE <br />OPTIMISATION</a>
-          </div>
-        </div>
-      </div> -->
     </section>
 
     <!-- Section 5 -->
     <section id="section5" class="section section5">
-      <!-- <video
-          playsinline
-          autoplay
-          muted
-          defaultMuted
-          loop
-          class="fullscreen-video"
-        >
-          <source src="assets/section5/vid3.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> -->
       <video
         playsinline
         autoplay
@@ -760,7 +689,7 @@
         loop
         class="fullscreen-video"
       >
-        <source src="assets/globs/clients.mp4" type="video/mp4" />
+        <source src="assets/globs/clients.m4v" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -772,7 +701,7 @@
         loop
         class="fullscreen-video2"
       >
-        <source src="assets/globs/clients2.webm" />
+        <source src="assets/globs/clients21.webm" />
         Your browser does not support the video tag.
       </video>
 
@@ -800,52 +729,30 @@
       </footer>
     </section>
 
-    <!-- <section id="section6" class="section11 section6">
-      <video
-        playsinline
-        autoplay
-        muted
-        defaultMuted
-        loop
-        id="video-foot"
-        class="video-foot"
-      >
-        <source src="assets/sect-4-bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <footer class="footer-container">
-        <div class="footer-flex">
-          <div>
-            <img class="logo-footer" src="assets/cin-logo.png" alt="logo" />
-          </div>
-          <div class="footer-links">
-            <a class="alink" href="#home">Home</a>
-            <a class="alink" href="#about">About Us</a>
-            <a class="alink" href="#why">Why Choose Us</a>
-            <a class="alink" href="#services">Our Services</a>
-          </div>
-          <div class="footer-links">
-            <a class="alink" href="#clients">Clients</a>
-            <a class="alink" href="#portfolio">Our Portfolio</a>
-            <a class="alink" href="#segments">Segments</a>
-            <a class="alink" href="#contact">Contact Us</a>
-          </div>
-        </div>
-        <p class="copyright" style="text-align: center">
-          &copy; 2024 Your Company Name. All rights reserved.
-        </p>
-      </footer>
-    </section> -->
-
-    <!-- Footer -->
-    <!-- <section id="footer" class="footer">
-            <div class="content">
-                <div class="footer-left">
-                    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-                </div>
-            </div>
-        </section> -->
     <script src="lib/js/jquery.js"></script>
+    <script>
+      function lazyLoadVideo() {
+        const videos = document.querySelectorAll("video[data-src]");
+        console.log("videos...", videos);
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              video.src = video.dataset.src;
+              video.removeAttribute("data-src");
+              observer.unobserve(video);
+            }
+          });
+        });
+
+        videos.forEach((video) => {
+          observer.observe(video);
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", lazyLoadVideo);
+    </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="lib/js/custom.js"></script>
     <script src="lib/js/transition.js"></script>
@@ -1039,6 +946,9 @@
             if (!isIE11()) {
               if (planet == "Mercury") {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 globe.classList.add("fade-down-left");
                 setTimeout(() => {
                   globe.src = supportsHEVCAlpha()
@@ -1049,24 +959,36 @@
               } else if (planet == "Venus") {
                 globe.classList.add("fade-down-left");
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 // globe.src = "assets/globs/Venus.webm";
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/venusoutputnew.mov"
                   : "assets/globs/Venus.webm";
               } else if (planet == "Earth") {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 // globe.src = "assets/globs/Earth.webm";
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/earthouputnew.mov"
                   : "assets/globs/Earth.webm";
               } else if (planet == "Mars") {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 // globe.src = "assets/globs/Mars.webm";
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/marsoutputnew.mov"
                   : "assets/globs/Mars.webm";
               } else if (planet == "Jupiter") {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/jupiteroutputnew.mov"
                   : "assets/globs/Jupiter.webm";
@@ -1093,12 +1015,18 @@
                   ? "assets/globs/saturnoutputnew.mov"
                   : "assets/globs/Saturn.webm";
               } else if (planet == "Uranus") {
-                sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                sunVideo.style.transform = `translateX(-50%) scale(0.52)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.72)`;
+                }
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/uranusoutputnew.mov"
                   : "assets/globs/Uranus.webm";
               } else if (planet == "Neptune") {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 // globe.src = "assets/globs/Neptune.webm";
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/neptuneoutputnew.mov"
@@ -1106,6 +1034,9 @@
                 globe.classList.add("fade-down-left");
               } else {
                 sunVideo.style.transform = `translateX(-50%) scale(0.56)`;
+                if (ismobile) {
+                  sunVideo.style.transform = `translateX(-50%) scale(0.75)`;
+                }
                 // globe.src = "assets/globs/sun.webm";
                 globe.src = supportsHEVCAlpha()
                   ? "assets/globs/sunoutputnew.mov"
@@ -1115,13 +1046,6 @@
 
             function isAppleDevice() {
               return /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
-            }
-
-            function supportsHEVCAlpha() {
-              const userAgent = navigator.userAgent;
-              return (
-                userAgent.includes("Safari") && !userAgent.includes("Chrome")
-              );
             }
 
             if (supportsHEVCAlpha()) {
@@ -1161,45 +1085,5 @@
         });
       });
     </script>
-
-    <!-- <script>
-      function arrangeCircularMenu() {
-        const services = document.querySelectorAll(".service-new");
-        const radiusX = 120; // Horizontal radius
-        const radiusY = 150; // Vertical radius
-        const totalItems = services.length;
-
-        const logo = document.querySelector(".logo-new");
-        logo.classList.add("animate-logo");
-
-        services.forEach((service, index) => {
-          const angle = (index * 2 * Math.PI) / totalItems;
-
-          // Calculate positions using different radii for X and Y to create oval
-          const x = radiusX * Math.cos(angle - Math.PI / 2);
-          const y = radiusY * Math.sin(angle - Math.PI / 2);
-
-          // Apply the transformation
-          service.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-          service.style.left = "50%";
-          service.style.top = "50%";
-
-          // Fade in with delay
-          setTimeout(() => {
-            service.style.opacity = "1";
-          }, index * 1000);
-        });
-      }
-
-      // Run on page load
-      document.addEventListener("DOMContentLoaded", arrangeCircularMenu);
-
-      // Run on resize
-      let resizeTimer;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(arrangeCircularMenu, 250);
-      });
-    </script> -->
   </body>
 </html>
